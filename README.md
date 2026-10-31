@@ -1,5 +1,14 @@
 **MCDSi** is a homebrew port/demake of **Minecraft (1.7.10)** built exclusively for the **Nintendo DSi** (`DSi-Mode`). Written from scratch in C, this project leverages the DSi's enhanced hardware (133 MHz ARM9 CPU and 16 MB of RAM) to bring the classic block-building, crafting, and survival experience to dual-screen handheld hardware.
 
+
+
+<img width="256" height="384" alt="image" src="https://github.com/user-attachments/assets/4b2b6bff-7e1a-4399-a231-a8b896d41f78" />
+
+<img width="440" height="676" alt="image" src="https://github.com/user-attachments/assets/81124773-1d0b-4a34-8748-4a5b8a842edf" />
+
+<img width="435" height="671" alt="image" src="https://github.com/user-attachments/assets/ddf301d5-837a-4083-9e4f-b5d8d787613c" />
+
+
 > ⚠️ **Important Compatibility Note:** Because this port relies on Nintendo DSi hardware resources, **it will NOT work on original Nintendo DS / DS Lite consoles or emulators that lack DSi-Mode support (such as DeSmuME)**.
 
 ## ✨ Features
@@ -32,3 +41,5 @@ To compile the project yourself, you will need a Nintendo DS/DSi development env
 git clone [https://github.com/YOUR_USERNAME/mcdsi.git](https://github.com/YOUR_USERNAME/mcdsi.git)
 cd mcdsi
 make
+
+
