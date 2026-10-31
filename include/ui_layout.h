@@ -1,0 +1,204 @@
+/* GENERADO por tools/convert_assets.py - no editar */
+#ifndef UI_LAYOUT_H
+#define UI_LAYOUT_H
+
+#define UI_SHEET_W 256
+#define UI_SHEET_H 1396
+
+#define UI_DIRT_X 0
+#define UI_DIRT_Y 0
+#define UI_DIRT_W 16
+#define UI_DIRT_H 16
+#define UI_BTN_DISABLED_X 16
+#define UI_BTN_DISABLED_Y 0
+#define UI_BTN_DISABLED_W 200
+#define UI_BTN_DISABLED_H 20
+#define UI_BTN_NORMAL_X 0
+#define UI_BTN_NORMAL_Y 20
+#define UI_BTN_NORMAL_W 200
+#define UI_BTN_NORMAL_H 20
+#define UI_BTN_HOVER_X 0
+#define UI_BTN_HOVER_Y 40
+#define UI_BTN_HOVER_W 200
+#define UI_BTN_HOVER_H 20
+#define UI_HOTBAR_X 0
+#define UI_HOTBAR_Y 60
+#define UI_HOTBAR_W 182
+#define UI_HOTBAR_H 22
+#define UI_SELECTOR_X 182
+#define UI_SELECTOR_Y 60
+#define UI_SELECTOR_W 24
+#define UI_SELECTOR_H 24
+#define UI_INV_X 0
+#define UI_INV_Y 84
+#define UI_INV_W 176
+#define UI_INV_H 166
+#define UI_CREA_X 0
+#define UI_CREA_Y 250
+#define UI_CREA_W 195
+#define UI_CREA_H 136
+#define UI_CRAFT_X 0
+#define UI_CRAFT_Y 386
+#define UI_CRAFT_W 176
+#define UI_CRAFT_H 166
+#define UI_FURNACE_X 0
+#define UI_FURNACE_Y 552
+#define UI_FURNACE_W 176
+#define UI_FURNACE_H 166
+#define UI_FURN_FLAME_X 176
+#define UI_FURN_FLAME_Y 552
+#define UI_FURN_FLAME_W 14
+#define UI_FURN_FLAME_H 14
+#define UI_FURN_ARROW_X 190
+#define UI_FURN_ARROW_Y 552
+#define UI_FURN_ARROW_W 24
+#define UI_FURN_ARROW_H 16
+#define UI_CHEST_X 0
+#define UI_CHEST_Y 718
+#define UI_CHEST_W 176
+#define UI_CHEST_H 166
+#define UI_CHEST_DBL_X 0
+#define UI_CHEST_DBL_Y 884
+#define UI_CHEST_DBL_W 176
+#define UI_CHEST_DBL_H 192
+#define UI_SCROLL_X 176
+#define UI_SCROLL_Y 884
+#define UI_SCROLL_W 12
+#define UI_SCROLL_H 15
+#define UI_SCROLL_OFF_X 188
+#define UI_SCROLL_OFF_Y 884
+#define UI_SCROLL_OFF_W 12
+#define UI_SCROLL_OFF_H 15
+#define UI_ARMOR_HELMET_X 200
+#define UI_ARMOR_HELMET_Y 884
+#define UI_ARMOR_HELMET_W 16
+#define UI_ARMOR_HELMET_H 16
+#define UI_ARMOR_CHEST_X 216
+#define UI_ARMOR_CHEST_Y 884
+#define UI_ARMOR_CHEST_W 16
+#define UI_ARMOR_CHEST_H 16
+#define UI_ARMOR_LEGS_X 232
+#define UI_ARMOR_LEGS_Y 884
+#define UI_ARMOR_LEGS_W 16
+#define UI_ARMOR_LEGS_H 16
+#define UI_ARMOR_BOOTS_X 0
+#define UI_ARMOR_BOOTS_Y 1076
+#define UI_ARMOR_BOOTS_W 16
+#define UI_ARMOR_BOOTS_H 16
+#define UI_STEVE_PREVIEW_X 16
+#define UI_STEVE_PREVIEW_Y 1076
+#define UI_STEVE_PREVIEW_W 32
+#define UI_STEVE_PREVIEW_H 64
+#define UI_ARMPV0_0_X 48
+#define UI_ARMPV0_0_Y 1076
+#define UI_ARMPV0_0_W 32
+#define UI_ARMPV0_0_H 64
+#define UI_ARMPV0_1_X 80
+#define UI_ARMPV0_1_Y 1076
+#define UI_ARMPV0_1_W 32
+#define UI_ARMPV0_1_H 64
+#define UI_ARMPV0_2_X 112
+#define UI_ARMPV0_2_Y 1076
+#define UI_ARMPV0_2_W 32
+#define UI_ARMPV0_2_H 64
+#define UI_ARMPV0_3_X 144
+#define UI_ARMPV0_3_Y 1076
+#define UI_ARMPV0_3_W 32
+#define UI_ARMPV0_3_H 64
+#define UI_ARMPV1_0_X 176
+#define UI_ARMPV1_0_Y 1076
+#define UI_ARMPV1_0_W 32
+#define UI_ARMPV1_0_H 64
+#define UI_ARMPV1_1_X 208
+#define UI_ARMPV1_1_Y 1076
+#define UI_ARMPV1_1_W 32
+#define UI_ARMPV1_1_H 64
+#define UI_ARMPV1_2_X 0
+#define UI_ARMPV1_2_Y 1140
+#define UI_ARMPV1_2_W 32
+#define UI_ARMPV1_2_H 64
+#define UI_ARMPV1_3_X 32
+#define UI_ARMPV1_3_Y 1140
+#define UI_ARMPV1_3_W 32
+#define UI_ARMPV1_3_H 64
+#define UI_ARMPV2_0_X 64
+#define UI_ARMPV2_0_Y 1140
+#define UI_ARMPV2_0_W 32
+#define UI_ARMPV2_0_H 64
+#define UI_ARMPV2_1_X 96
+#define UI_ARMPV2_1_Y 1140
+#define UI_ARMPV2_1_W 32
+#define UI_ARMPV2_1_H 64
+#define UI_ARMPV2_2_X 128
+#define UI_ARMPV2_2_Y 1140
+#define UI_ARMPV2_2_W 32
+#define UI_ARMPV2_2_H 64
+#define UI_ARMPV2_3_X 160
+#define UI_ARMPV2_3_Y 1140
+#define UI_ARMPV2_3_W 32
+#define UI_ARMPV2_3_H 64
+#define UI_ARMPV3_0_X 192
+#define UI_ARMPV3_0_Y 1140
+#define UI_ARMPV3_0_W 32
+#define UI_ARMPV3_0_H 64
+#define UI_ARMPV3_1_X 224
+#define UI_ARMPV3_1_Y 1140
+#define UI_ARMPV3_1_W 32
+#define UI_ARMPV3_1_H 64
+#define UI_ARMPV3_2_X 0
+#define UI_ARMPV3_2_Y 1204
+#define UI_ARMPV3_2_W 32
+#define UI_ARMPV3_2_H 64
+#define UI_ARMPV3_3_X 32
+#define UI_ARMPV3_3_Y 1204
+#define UI_ARMPV3_3_W 32
+#define UI_ARMPV3_3_H 64
+#define UI_ARMPV4_0_X 64
+#define UI_ARMPV4_0_Y 1204
+#define UI_ARMPV4_0_W 32
+#define UI_ARMPV4_0_H 64
+#define UI_ARMPV4_1_X 96
+#define UI_ARMPV4_1_Y 1204
+#define UI_ARMPV4_1_W 32
+#define UI_ARMPV4_1_H 64
+#define UI_ARMPV4_2_X 128
+#define UI_ARMPV4_2_Y 1204
+#define UI_ARMPV4_2_W 32
+#define UI_ARMPV4_2_H 64
+#define UI_ARMPV4_3_X 160
+#define UI_ARMPV4_3_Y 1204
+#define UI_ARMPV4_3_W 32
+#define UI_ARMPV4_3_H 64
+
+/* sprites de armadura del Steve del inventario: [material][pieza] = {x, y} (32x64 cada uno) */
+static const unsigned short UI_ARMPV_XY[5][4][2] = {
+    {{48, 1076}, {80, 1076}, {112, 1076}, {144, 1076}},
+    {{176, 1076}, {208, 1076}, {0, 1140}, {32, 1140}},
+    {{64, 1140}, {96, 1140}, {128, 1140}, {160, 1140}},
+    {{192, 1140}, {224, 1140}, {0, 1204}, {32, 1204}},
+    {{64, 1204}, {96, 1204}, {128, 1204}, {160, 1204}},
+};
+
+#define UI_ICON_Y0 1268
+#define HUD_ICON_Y0 48
+#define HUD_STAT_X 30
+#define HUD_FOOD_X 70
+#define HUD_ARMOR_X 110
+#define HUD_BUBBLE_X 150
+#define HUD_ATLAS_H 256
+#define HUD_STAT_Y 24
+#define HUD_STAT_S 11
+#define ICON_COUNT 125
+
+/* indices fijos de paleta */
+#define UIC_WHITE 1
+#define UIC_SHADOW 2
+#define UIC_YELLOW 3
+#define UIC_GRAY 4
+#define UIC_BLACK 5
+#define UIC_RED 6
+#define UIC_LGRAY 7
+#define UIC_DGRAY 8
+#define UIC_GREEN 9
+
+#endif
