@@ -33,13 +33,4 @@
 2. **On Real Hardware (DSi / 3DS):** Copy the `.nds` file to your SD card and launch it via **TWiLight Menu++** or **Unlaunch** with **DSi Mode** enabled in the per-game settings. *(Note: Standard DS flashcards running in DS-Mode are not supported unless they support DSi hybrid/enhanced mode).*
 3. **On Emulator:** Use **melonDS** (ensure `Console type` is set to **DSi** in *Config -> Emu settings*) or **No$gba** configured in DSi mode. **DeSmuME is not supported.**
 
-## 🔧 Building from Source
-
-To compile the project yourself, you will need a Nintendo DS/DSi development environment (**devkitARM / libnds** or **BlocksDS**) and **Python 3** (for asset conversion scripts):
-
-```bash
-git clone [https://github.com/YOUR_USERNAME/mcdsi.git](https://github.com/YOUR_USERNAME/mcdsi.git)
-cd mcdsi
-make
-
 
