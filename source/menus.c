@@ -790,7 +790,7 @@ int menu_play_hud(Player *p)
     ui_button(132, 30, 116, "Game Menu", 1);
     ui_button(JUMP_X, JUMP_Y, JUMP_W, "Jump", 1);
 
-    ui_text_center(CX, 56, "Drag the stylus to look around", UIC_GRAY, 0);
+    ui_text_center(CX, 56, "Drag to look  |  SELECT+R: Offhand", UIC_GRAY, 0);
     ui_hint(CX, 86, "{L} Break/Attack   {R} Place/Use", UIC_GRAY);
     ui_hint(CX, 103, "{A} Jump (x2 fly)   {B} Sneak", UIC_GRAY);
     ui_hint(CX, 120, "{X}{Y} Slot  {START} Pause  {SELECT} Camera", UIC_GRAY);
