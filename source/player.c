@@ -353,10 +353,9 @@ static void place_bed(Player *p)
     }
 }
 
-static void place_block(Player *p)
+static void place_block(Player *p, Slot *s)
 {
-    if (!p->has_target) return;
-    Slot *s = &p->inv[p->sel];
+    if (!p->has_target || !s) return;
     if (s->id == I_BED) { place_bed(p); return; }
     if (s->id == 0 || s->id >= B_COUNT || (p->gamemode == 0 && s->count == 0)) return;   // los items no se colocan
     u8 tb = world_get(p->tx, p->ty, p->tz);
@@ -590,7 +589,8 @@ static void do_actions(Player *p, u32 held, u32 down)
     }
 
     // ---- usar / poner / tensar arco (R) ----
-    Slot *h = &p->inv[p->sel];
+    Slot *h = (held & KEY_SELECT) ? &p->offhand : &p->inv[p->sel];
+    int offhand_use = (held & KEY_SELECT) != 0;
     int has_arr = (p->gamemode == 1);
     if (!has_arr) {
         for (int i = 0; i < 36; i++) if (p->inv[i].id == I_ARROW && p->inv[i].count > 0) { has_arr = 1; break; }
@@ -601,18 +601,18 @@ static void do_actions(Player *p, u32 held, u32 down)
         u8 tb = p->has_target ? world_get(p->tx, p->ty, p->tz) : B_AIR;
         int sat = 0;
         int fv = h->id ? food_value(h->id, &sat) : 0;
-        if (p->has_target && !p->sneaking && tb == B_CRAFTING) {
+        if (!offhand_use && p->has_target && !p->sneaking && tb == B_CRAFTING) {
             if (down & KEY_R) p->want_craft = 1;      // abrir crafteo 3x3
-        } else if (p->has_target && !p->sneaking && BLK_IS_FURNACE(tb)) {
+        } else if (!offhand_use && p->has_target && !p->sneaking && BLK_IS_FURNACE(tb)) {
             if (down & KEY_R) { p->want_furnace = 1; p->fx = p->tx; p->fy = p->ty; p->fz = p->tz; }
-        } else if (p->has_target && !p->sneaking && BLK_IS_CHEST(tb)) {
+        } else if (!offhand_use && p->has_target && !p->sneaking && BLK_IS_CHEST(tb)) {
             if (down & KEY_R) { p->want_chest = 1; p->fx = p->tx; p->fy = p->ty; p->fz = p->tz; }
-        } else if (p->has_target && !p->sneaking && BLK_IS_BED(tb)) {
+        } else if (!offhand_use && p->has_target && !p->sneaking && BLK_IS_BED(tb)) {
             if (down & KEY_R) try_sleep(p, p->tx, p->ty, p->tz);
-        } else if (h->id == I_BOW) {
+        } else if (!offhand_use && h->id == I_BOW) {
             if (has_arr) { if (p->bow_t < 7200) p->bow_t++; }
             else p->bow_t = 0;
-        } else if (h->id && armor_piece(h->id) >= 0) {
+        } else if (!offhand_use && h->id && armor_piece(h->id) >= 0) {
             if (down & KEY_R) player_equip_armor(p, p->sel);      // ponerse la armadura desde la mano
         } else if (fv > 0) {
             if (p->gamemode == 0 && p->food < 20) {
@@ -627,7 +627,7 @@ static void do_actions(Player *p, u32 held, u32 down)
                 }
             }
         } else if ((down & KEY_R) || p->act_cd == 0) {
-            place_block(p);
+            place_block(p, h);
             p->act_cd = 10;
         }
     } else {
@@ -697,6 +697,11 @@ void player_drop_all(Player *p)
             drops_spawn_slot(p->x, p->y + FP / 2, p->z, p->inv[i], vx, vy, vz, 45);
             p->inv[i].id = 0; p->inv[i].count = 0; p->inv[i].dmg = 0;
         }
+    }
+    if (p->offhand.id && p->offhand.count) {
+        int vx = (rand() % 321) - 160, vz = (rand() % 321) - 160;
+        drops_spawn_slot(p->x, p->y + FP / 2, p->z, p->offhand, vx, 180, vz, 45);
+        p->offhand.id = p->offhand.count = 0; p->offhand.dmg = 0;
     }
     for (int i = 0; i < 4; i++) {
         if (p->armor[i].id && p->armor[i].count) {
