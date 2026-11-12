@@ -331,7 +331,7 @@ int main(void)
                 break;
 
             case ST_PLAY: {
-                if (down & KEY_SELECT) g_player.cam_mode = (g_player.cam_mode + 1) % 3;
+                if ((down & KEY_SELECT) && !(held & KEY_R)) g_player.cam_mode = (g_player.cam_mode + 1) % 3;
                 if (down & KEY_START) { g_state = ST_PAUSE; save_game(); }
                 if (g_player.want_craft) { g_player.want_craft = 0; g_craft_table = 1; g_furnace_open = -1; g_chest_open = -1; g_chest_open2 = -1; g_state = ST_INVENTORY; }
                 if (g_player.want_furnace) {
