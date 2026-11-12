@@ -90,6 +90,7 @@ static void save_extra_player(void)
     ex.food_sat = g_player.food_sat; ex.food_exh = g_player.food_exh;
     ex.daytime = g_daytime;
     memcpy(ex.armor, g_player.armor, sizeof(ex.armor));
+    { struct { char magic[8]; Slot slot; } oh; memset(&oh, 0, sizeof(oh)); memcpy(oh.magic, "MCDSOH01", 8); oh.slot = g_player.offhand; world_file_write("offhand.dat", &oh, (int)sizeof(oh)); }
     memcpy(ex.furn, g_furn, sizeof(ex.furn));
     world_file_write("extra.dat", &ex, (int)sizeof(ex));
     {   // cama de reaparicion (fichero aparte: no cambia el formato de extra.dat)
@@ -115,6 +116,7 @@ static void load_extra(void)
     static ExtraSave ex;
     furnace_clear();
     chest_clear();
+    { struct { char magic[8]; Slot slot; } oh; memset(&oh, 0, sizeof(oh)); if (world_file_read("offhand.dat", &oh, (int)sizeof(oh)) && memcmp(oh.magic, "MCDSOH01", 8) == 0) g_player.offhand = oh.slot; }
     world_file_read("drops.dat", g_drops, (int)sizeof(g_drops));
     {
         BedSave bs;
