@@ -329,9 +329,8 @@ static int player_overlaps_cell(const Player *p, int cx, int cy, int cz)
 static int bed_cell_free(u8 c) { return c == B_AIR || (g_blocks[c].flags & F_PLANT); }
 
 // Cama: el pie va en la celda apuntada y la cabeza se extiende hacia donde mira el jugador
-static void place_bed(Player *p)
+static void place_bed(Player *p, Slot *s)
 {
-    Slot *s = &p->inv[p->sel];
     if (p->gamemode == 0 && s->count == 0) return;
     u8 tb = world_get(p->tx, p->ty, p->tz);
     if (BLK_IS_TORCH(tb) || (g_blocks[tb].flags & F_PLANT)) return;
@@ -356,7 +355,7 @@ static void place_bed(Player *p)
 static void place_block(Player *p, Slot *s)
 {
     if (!p->has_target || !s) return;
-    if (s->id == I_BED) { place_bed(p); return; }
+    if (s->id == I_BED) { place_bed(p, s); return; }
     if (s->id == 0 || s->id >= B_COUNT || (p->gamemode == 0 && s->count == 0)) return;   // los items no se colocan
     u8 tb = world_get(p->tx, p->ty, p->tz);
     // No permitir colocar bloques encima ni sobre el tallgrass (ni apoyados en antorchas/plantas)
