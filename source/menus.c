@@ -356,6 +356,7 @@ static void build_refs(Player *p, int ox, int oy)
         refs[nref++] = (Ref){ox + 144, oy + 36, &g_out, 1, 0, K_NONE};
         for (int a = 0; a < 4; a++)
             refs[nref++] = (Ref){ox + 8, oy + 8 + a * 18, &p->armor[a], 0, 0, K_ARM0 + a};
+        refs[nref++] = (Ref){ox + 62, oy + 62, &p->offhand, 0, 0, K_NONE};
     }
     for (int i = 9; i < 36; i++)
         refs[nref++] = (Ref){ox + 8 + ((i - 9) % 9) * 18, oy + 84 + ((i - 9) / 9) * 18, &p->inv[i], 0, 0, K_NONE};
@@ -507,6 +508,8 @@ static void inv_survival(Player *p)
         if (!p->armor[1].id) ui_blit(UI_ARMOR_CHEST_X,  UI_ARMOR_CHEST_Y,  16, 16, ox + 8, oy + 26);
         if (!p->armor[2].id) ui_blit(UI_ARMOR_LEGS_X,   UI_ARMOR_LEGS_Y,   16, 16, ox + 8, oy + 44);
         if (!p->armor[3].id) ui_blit(UI_ARMOR_BOOTS_X,  UI_ARMOR_BOOTS_Y,  16, 16, ox + 8, oy + 62);
+        ui_text(ox + 60, oy + 54, "Off", UIC_DGRAY, 0);
+        ui_slot(&p->offhand, ox + 62, oy + 62, 1);
         // Steve en el recuadro negro (x 26..77, y 8..77): 32x64 centrado
         ui_blit(UI_STEVE_PREVIEW_X, UI_STEVE_PREVIEW_Y, UI_STEVE_PREVIEW_W, UI_STEVE_PREVIEW_H, ox + 36, oy + 11);
         {   // armadura puesta, encima de la skin: pantalones, botas, peto y casco (mismo orden que en Minecraft)
@@ -802,6 +805,8 @@ int menu_play_hud(Player *p)
         if (ui_clicked(hx + 2 + i * 20, hy, 20, 22)) p->sel = i;
     }
     ui_blit(UI_SELECTOR_X, UI_SELECTOR_Y, UI_SELECTOR_W, UI_SELECTOR_H, hx - 1 + p->sel * 20, hy - 1);
+    ui_slot(&p->offhand, hx + 184, hy + 3, p->gamemode == 0);
+    ui_text(hx + 184, hy - 8, "Off", UIC_WHITE, 0);
 
     if (ui_clicked(8, 30, 116, 20)) ret = 1;
     if (ui_clicked(132, 30, 116, 20)) ret = 2;
