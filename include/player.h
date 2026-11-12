@@ -22,6 +22,7 @@ typedef struct {
     int yaw, pitch;       // angulos de 15 bits (32768 = 360 grados)
     int on_ground, flying, sneaking, sprinting, in_water, head_water;
     Slot inv[36];         // 0..8 hotbar, 9..35 inventario
+    Slot offhand;        // mano secundaria (se guarda por separado para compatibilidad)
     int sel;              // slot activo
     int gamemode;         // 0 survival, 1 creative
     int health, food;     // 0..20 (medios corazones / medios muslos); solo se muestran en survival
