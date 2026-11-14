@@ -173,7 +173,7 @@ void gfx_prepare_title(const char *splash)
     if (tex_labels < 0) {
         memset(buf, 0, LBL_W * LBL_H * 2);
         s_lbl_w1 = text_bake_outlined("Minecraft 1.0 (based on 1.7.10)", font_bin, fontw_bin, buf, LBL_W, 1, 1);
-        s_lbl_w2 = text_bake_outlined("Developed by MartusTheMartian", font_bin, fontw_bin, buf, LBL_W, 1, 1 + LBL_LINE_H);
+        s_lbl_w2 = text_bake_outlined("Developed by [PLACEHOLDER]", font_bin, fontw_bin, buf, LBL_W, 1, 1 + LBL_LINE_H);
         s_lbl_w3 = text_bake_outlined("and TholyTorch", font_bin, fontw_bin, buf, LBL_W, 1, 1 + 2 * LBL_LINE_H);
         upload_to(&tex_labels, buf, LBL_W, LBL_H);
     }
