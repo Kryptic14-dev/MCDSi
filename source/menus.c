@@ -791,7 +791,7 @@ int menu_play_hud(Player *p)
     ui_button(132, 30, 116, "Game Menu", 1);
     ui_button(JUMP_X, JUMP_Y, JUMP_W, "Jump", 1);
 
-    ui_text_center(CX, 56, "Drag to look  |  SELECT+R: Offhand", UIC_GRAY, 0);
+    ui_text_center(CX, 56, "Drag to look  |  L+R: Offhand", UIC_GRAY, 0);
     ui_hint(CX, 86, "{L} Break/Attack   {R} Place/Use", UIC_GRAY);
     ui_hint(CX, 103, "{A} Jump (x2 fly)   {B} Sneak", UIC_GRAY);
     ui_hint(CX, 120, "{X}{Y} Slot  {START} Pause  {SELECT} Camera", UIC_GRAY);
@@ -806,7 +806,9 @@ int menu_play_hud(Player *p)
         if (ui_clicked(hx + 2 + i * 20, hy, 20, 22)) p->sel = i;
     }
     ui_blit(UI_SELECTOR_X, UI_SELECTOR_Y, UI_SELECTOR_W, UI_SELECTOR_H, hx - 1 + p->sel * 20, hy - 1);
-    ui_slot(&p->offhand, hx + 184, hy + 3, p->gamemode == 0);
+    // Dedicated offhand tile, separated from the nine regular hotbar slots.
+    box(hx + 182, hy - 1, 20, 20, UIC_WHITE);
+    ui_slot(&p->offhand, hx + 184, hy + 1, p->gamemode == 0);
     ui_text(hx + 184, hy - 8, "Off", UIC_WHITE, 0);
 
     if (ui_clicked(8, 30, 116, 20)) ret = 1;
