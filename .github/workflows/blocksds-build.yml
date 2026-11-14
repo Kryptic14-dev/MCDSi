@@ -1,0 +1,37 @@
+name: BlocksDS build
+
+on:
+  push:
+    branches:
+      - feature/dsi-expansion
+  pull_request:
+    branches:
+      - main
+      - feature/dsi-expansion
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Build Nintendo DSi ROM with BlocksDS
+        run: |
+          docker run --rm \
+            -v "${GITHUB_WORKSPACE}:/work" \
+            -w /work \
+            --entrypoint bash \
+            skylyrac/blocksds:slim-latest \
+            -lc "make"
+
+      - name: Upload ROM
+        uses: actions/upload-artifact@v4
+        with:
+          name: Minecraft-DSi
+          path: Minecraft_DSi.nds
+          if-no-files-found: error
