@@ -508,10 +508,10 @@ static void inv_survival(Player *p)
         if (!p->armor[1].id) ui_blit(UI_ARMOR_CHEST_X,  UI_ARMOR_CHEST_Y,  16, 16, ox + 8, oy + 26);
         if (!p->armor[2].id) ui_blit(UI_ARMOR_LEGS_X,   UI_ARMOR_LEGS_Y,   16, 16, ox + 8, oy + 44);
         if (!p->armor[3].id) ui_blit(UI_ARMOR_BOOTS_X,  UI_ARMOR_BOOTS_Y,  16, 16, ox + 8, oy + 62);
+        // Steve preview is drawn first so it cannot cover the offhand slot.
+        ui_blit(UI_STEVE_PREVIEW_X, UI_STEVE_PREVIEW_Y, UI_STEVE_PREVIEW_W, UI_STEVE_PREVIEW_H, ox + 36, oy + 11);
         ui_text(ox + 60, oy + 54, "Off", UIC_DGRAY, 0);
         ui_slot(&p->offhand, ox + 62, oy + 62, 1);
-        // Steve en el recuadro negro (x 26..77, y 8..77): 32x64 centrado
-        ui_blit(UI_STEVE_PREVIEW_X, UI_STEVE_PREVIEW_Y, UI_STEVE_PREVIEW_W, UI_STEVE_PREVIEW_H, ox + 36, oy + 11);
         {   // armadura puesta, encima de la skin: pantalones, botas, peto y casco (mismo orden que en Minecraft)
             static const u8 order[4] = {AP_LEGS, AP_BOOTS, AP_CHEST, AP_HELMET};
             for (int k = 0; k < 4; k++) {
@@ -763,6 +763,7 @@ u32 menu_play_sig(const Player *p)
     MIX(p->x >> 12); MIX(p->y >> 12); MIX(p->z >> 12);
     MIX(g_fps); MIX(p->msg_t > 0); MIX(p->tip_t > 0); MIX(p->sleep_t > 0); MIX(p->cam_mode); MIX(p->gamemode); MIX(p->sel);
     for (int i = 0; i < 9; i++) { MIX(p->inv[i].id); MIX(p->inv[i].count); MIX(p->inv[i].dmg); }
+    MIX(p->offhand.id); MIX(p->offhand.count); MIX(p->offhand.dmg);
 #undef MIX
     return h;
 }
@@ -814,7 +815,7 @@ int menu_play_hud(Player *p)
     // mirar con el lapiz
     if (ui_t.pressed) {
         look_active = !(in_rect(ui_t.px, ui_t.py, 8, 30, 116, 20) || in_rect(ui_t.px, ui_t.py, 132, 30, 116, 20) ||
-                        in_rect(ui_t.px, ui_t.py, hx, hy, 182, 22) ||
+                        in_rect(ui_t.px, ui_t.py, hx, hy, 202, 22) ||
                         in_rect(ui_t.px, ui_t.py, JUMP_X, JUMP_Y, JUMP_W, JUMP_H));
     }
     if (!ui_t.down) look_active = 0;
