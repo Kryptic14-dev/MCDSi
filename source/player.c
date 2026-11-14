@@ -541,12 +541,12 @@ static void do_actions(Player *p, u32 held, u32 down)
     if (p->swing > 0) p->swing--;
 
     // ---- golpear mobs / picar (L) ----
-    if ((held & KEY_L) && p->mob_target >= 0) {
+    if ((held & KEY_L) && !(held & KEY_R) && p->mob_target >= 0) {
         p->brk_prog = 0;
         p->brk_x = p->brk_y = p->brk_z = -1;
         if ((down & KEY_L) || p->act_cd == 0) { attack_mob(p); p->act_cd = 12; }
         start_swing(p);
-    } else if (held & KEY_L) {
+    } else if ((held & KEY_L) && !(held & KEY_R)) {
         if (p->has_target) {
             u8 b = world_get(p->tx, p->ty, p->tz);
             int hard = g_blocks[b].hardness;
@@ -588,8 +588,8 @@ static void do_actions(Player *p, u32 held, u32 down)
     }
 
     // ---- usar / poner / tensar arco (R) ----
-    Slot *h = (held & KEY_SELECT) ? &p->offhand : &p->inv[p->sel];
-    int offhand_use = (held & KEY_SELECT) != 0;
+    int offhand_use = (held & (KEY_L | KEY_R)) == (KEY_L | KEY_R);
+    Slot *h = offhand_use ? &p->offhand : &p->inv[p->sel];
     int has_arr = (p->gamemode == 1);
     if (!has_arr) {
         for (int i = 0; i < 36; i++) if (p->inv[i].id == I_ARROW && p->inv[i].count > 0) { has_arr = 1; break; }
