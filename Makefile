@@ -10,7 +10,7 @@ NAME		:= Minecraft_DSi
 
 GAME_TITLE	:= Minecraft DSi
 GAME_SUBTITLE	:= Nintendo DSi Edition 1.7.10 
-GAME_AUTHOR	:= MartusTheMartian_&_TholyThorch
+GAME_AUTHOR	:= PLACEHOLDER
 GAME_ICON	:= icon.png
 
 # Codigo y datos
